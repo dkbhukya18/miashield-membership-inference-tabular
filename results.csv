@@ -1,0 +1,15 @@
+model,defense,queries,test_accuracy,rule_attack_accuracy,confidence_attack_auc,member_exclusion_rate,member_correct_shard_rate,nonmember_false_exclusion_rate
+logreg,none (single model),exact,0.8463,0.4953,0.4988,,,
+logreg,none (sharded ensemble),exact,0.8492,0.4957,0.4977,,,
+logreg,ESE,exact,0.8492,0.4946,0.5003,1.0,1.0,0.0
+logreg,ESE,perturbed,0.8492,0.4985,0.4998,0.0,0.0,0.0
+logreg,ASE,exact,0.8493,0.4948,0.5003,1.0,1.0,0.1666
+logreg,ASE,perturbed,0.8493,0.4976,0.5024,0.982,0.9452,0.1972
+logreg,none (sharded ensemble),perturbed,0.8492,0.4985,0.4998,,,
+random_forest,none (single model),exact,0.9055,0.5457,0.6033,,,
+random_forest,none (sharded ensemble),exact,0.9028,0.5098,0.518,,,
+random_forest,ESE,exact,0.9028,0.4984,0.5009,1.0,1.0,0.0
+random_forest,ESE,perturbed,0.9028,0.5046,0.5087,0.0,0.0,0.0
+random_forest,ASE,exact,0.9028,0.4984,0.5013,1.0,1.0,0.1666
+random_forest,ASE,perturbed,0.9028,0.4986,0.5041,0.982,0.9452,0.1972
+random_forest,none (sharded ensemble),perturbed,0.9028,0.5046,0.5087,,,
