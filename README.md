@@ -1,6 +1,6 @@
 # Preemptive Exclusion Against Membership Inference on Tabular Data (MIAShield ESE/ASE)
 
-Course project for CIS 545 (Trustworthy AI), University of Michigan-Dearborn, Fall 2023.
+Course project for CIS 545 (Data Security and Privacy), University of Michigan-Dearborn, Fall 2023.
 Team: Felipe Bastos, Ubong Imeh Effiom, Aloke Aggarwal, Dileep Kumar Bhukya. Advisor: Prof. Birhanu Eshete.
 
 This repository is a **corrected and re-run** version of the original course submission. While preparing it for publication I found that the original evaluation could not measure membership leakage (details in [ERRATA.md](ERRATA.md)). The code here fixes those problems, and the numbers below come from the corrected pipeline, not the course report.
