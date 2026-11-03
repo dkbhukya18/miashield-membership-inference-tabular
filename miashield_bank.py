@@ -1,16 +1,16 @@
 """
 MIAShield-style preemptive exclusion (ESE and ASE oracles) on the UCI Bank
-Marketing dataset -- corrected and reproducible version of the CIS 545 project.
+Marketing dataset -- CIS 545 project.
 
-What changed vs. the original course notebooks (see ERRATA.md for details):
-  * Ensemble members are genuinely trained on DISJOINT subsets (the original
-    VotingClassifier.fit() silently retrained every member on the full data).
+Design:
+  * Ensemble members are trained on DISJOINT subsets of the training data.
   * Membership ground truth is real: members come from the training set,
     non-members from the held-out test set, in equal numbers.
-  * ASE hashes "column=value" tokens so categorical features actually count.
+  * ASE hashes "column=value" tokens so categorical features count.
   * Every random step is seeded; results are regenerated, not hard-coded.
-  * A high-capacity (overfitting) target model is added, because a regularized
-    logistic regression barely leaks membership on this data.
+  * A high-capacity (overfitting) target model is evaluated alongside the
+    logistic regression, because a regularized logistic regression barely
+    leaks membership on this data.
 
 Usage:  python miashield_bank.py --data bank-full.csv
 """
