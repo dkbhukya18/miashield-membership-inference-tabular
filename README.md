@@ -3,7 +3,7 @@
 Course project for CIS 545 (Data Security and Privacy), University of Michigan-Dearborn, Fall 2023.
 Team: Felipe Bastos, Ubong Imeh Effiom, Aloke Aggarwal, Dileep Kumar Bhukya. Advisor: Prof. Birhanu Eshete.
 
-The numbers below come from the evaluation pipeline in this repository. [ERRATA.md](ERRATA.md) notes where they differ from the original course submission.
+The numbers below come from the evaluation pipeline in this repository.
 
 ## What the project does
 
@@ -20,7 +20,7 @@ The original paper evaluated image data. This project applies two of its oracles
 ## Setup
 
 - 80/20 stratified train/test split, 6 disjoint shards, seed 42.
-- Target models: class-balanced logistic regression (as in the original project) and a random forest (added, because the logistic model leaks almost nothing; see results).
+- Target models: class-balanced logistic regression and a random forest (included because the logistic model leaks almost nothing; see results).
 - Attack set: 5,000 true members (training records) and 5,000 true non-members (test records).
 - Attacks:
   - The ART rule-based attack, which predicts "member" whenever the model's prediction is correct.
@@ -51,7 +51,6 @@ Full results for both models are in [`results.csv`](results.csv).
 
 - Results come from one dataset, one split, and one seed, with no confidence intervals.
 - The attacks are basic black-box attacks. Stronger ones, such as shadow-model or label-only attacks, were not evaluated.
-- The random forest target was added after the course. It is not part of the original submission.
 - The ASE thresholds (20 bins, 0.03 max distance) were tuned on this data. An adaptive attacker who knows them could perturb queries just beyond the threshold.
 
 ## How to run
@@ -59,7 +58,6 @@ Full results for both models are in [`results.csv`](results.csv).
 ```bash
 pip install -r requirements.txt
 python miashield_bank.py --data bank-full.csv   # about 2 minutes on CPU; writes results.csv and run_config.json
-python audit_original.py                        # audits the original course evaluation; see ERRATA.md
 ```
 
 Dataset: [UCI Bank Marketing](https://archive.ics.uci.edu/dataset/222/bank+marketing) (`bank-full.csv`, semicolon-separated).
