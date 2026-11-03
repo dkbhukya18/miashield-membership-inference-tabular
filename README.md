@@ -3,7 +3,7 @@
 Course project for CIS 545 (Data Security and Privacy), University of Michigan-Dearborn, Fall 2023.
 Team: Felipe Bastos, Ubong Imeh Effiom, Aloke Aggarwal, Dileep Kumar Bhukya. Advisor: Prof. Birhanu Eshete.
 
-This repository is a **corrected and re-run** version of the original course submission. While preparing it for publication I found that the original evaluation could not measure membership leakage (details in [ERRATA.md](ERRATA.md)). The code here fixes those problems, and the numbers below come from the corrected pipeline, not the course report.
+The numbers below come from the evaluation pipeline in this repository. [ERRATA.md](ERRATA.md) notes where they differ from the original course submission.
 
 ## What the project does
 
@@ -42,7 +42,7 @@ Full results for both models are in [`results.csv`](results.csv).
 
 ### Takeaways
 
-- **The logistic regression model does not leak membership on this data.** Attack accuracy and AUC stay at about 0.50 with or without a defense, because a regularized linear model barely overfits. The original report's "74% → 48%" result was an evaluation artifact, not a defense effect ([ERRATA.md](ERRATA.md), item 1).
+- **The logistic regression model does not leak membership on this data.** Attack accuracy and AUC stay at about 0.50 with or without a defense, because a regularized linear model barely overfits.
 - **On an overfitting model, leakage is real but modest**, with confidence-attack AUC of 0.60. Sharding alone removes most of it (0.52), and exact-match exclusion removes the rest (0.50). Test accuracy drops by only 0.3 points.
 - **ESE breaks under trivial perturbation.** Once the query differs slightly from the stored record, the exact hash never matches (0% of members excluded), and leakage returns to the level of the unprotected ensemble.
 - **ASE closes that gap**, matching 98% of perturbed member queries. The cost is falsely matching 20% of non-member queries to near-duplicate training records. That costs almost no accuracy here, but it shows how the approximation threshold trades protection against utility.
@@ -59,7 +59,7 @@ Full results for both models are in [`results.csv`](results.csv).
 ```bash
 pip install -r requirements.txt
 python miashield_bank.py --data bank-full.csv   # about 2 minutes on CPU; writes results.csv and run_config.json
-python audit_original.py                        # reproduces the flaws in the original evaluation
+python audit_original.py                        # audits the original course evaluation; see ERRATA.md
 ```
 
 Dataset: [UCI Bank Marketing](https://archive.ics.uci.edu/dataset/222/bank+marketing) (`bank-full.csv`, semicolon-separated).
